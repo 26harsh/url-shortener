@@ -154,3 +154,10 @@ LOGGING = {
         'level': config('DJANGO_LOG_LEVEL', default='INFO'),
     },
 }
+
+CELERY_BEAT_SCHEDULE = {
+    'flush-click-counts-every-minute': {
+        'task': 'shortener.tasks.flush_click_counts_task',
+        'schedule': 60.0,  # seconds
+    },
+}
